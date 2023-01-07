@@ -2,19 +2,18 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
-
-class Reindeer{
+class Reindeer {
     private String name;
     private int weight;
     private int age;
     private double height;
+
     public Reindeer(String name, int weight, int age, double height) {
         this.name = name;
         this.weight = weight;
         this.age = age;
         this.height = height;
     }
-
     public String getName() {
         return name;
     }
@@ -41,11 +40,10 @@ class Reindeer{
                 '}';
     }
 }
-
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
-        List<Reindeer>reindeers = new ArrayList<>();
+        List<Reindeer> reindeers = new ArrayList<>();
         int t;
         int a;
         int b;
@@ -58,15 +56,15 @@ public class Main {
 
         int cont = 1;
 
-        while(t>0) {
+        while (t > 0) {
 
             aux = s.nextLine();
-            String [] aux2 = aux.split(" ");
+            String[] aux2 = aux.split(" ");
 
             a = Integer.parseInt(aux2[0]);
             b = Integer.parseInt(aux2[1]);
 
-            for(int i=0;i<a;i++){
+            for (int i = 0; i < a; i++) {
 
                 aux = s.nextLine();
                 aux2 = aux.split(" ");
@@ -77,8 +75,8 @@ public class Main {
             reindeers.sort(Comparator.comparing(Reindeer::getWeight).reversed().thenComparing(Reindeer::getAge).thenComparing(Reindeer::getHeight).thenComparing(Reindeer::getName));
 
             System.out.println("CENARIO {" + cont++ + "}");
-            for(int i=0;i<b;i++){
-                int j = i+1;
+            for (int i = 0; i < b; i++) {
+                int j = i + 1;
                 System.out.println(j + " - " + reindeers.get(i).getName());
             }
             reindeers.clear();
