@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 class Reindeer {
     private String name;
@@ -15,6 +16,7 @@ class Reindeer {
         this.age = age;
         this.height = height;
     }
+
     public String getName() {
         return name;
     }
@@ -41,6 +43,7 @@ class Reindeer {
                 '}';
     }
 }
+
 public class Main {
     public static void main(String[] args) {
 
@@ -73,12 +76,16 @@ public class Main {
                 reindeers.add(new Reindeer(aux2[0], Integer.parseInt(aux2[1]), Integer.parseInt(aux2[2]), Double.parseDouble(aux2[3])));
             }
 
-            reindeers.sort(Comparator.comparing(Reindeer::getWeight).reversed().thenComparing(Reindeer::getAge).thenComparing(Reindeer::getHeight).thenComparing(Reindeer::getName));
+            List<Reindeer> reindeersSorted = reindeers.stream()
+                    .sorted(Comparator.comparing(Reindeer::getWeight).reversed().thenComparing(Reindeer::getAge).thenComparing(Reindeer::getHeight).thenComparing(Reindeer::getName))
+                    .collect(Collectors.toList());
+
+//            reindeers.sort(Comparator.comparing(Reindeer::getWeight).reversed().thenComparing(Reindeer::getAge).thenComparing(Reindeer::getHeight).thenComparing(Reindeer::getName));
 
             System.out.println("CENARIO {" + cont++ + "}");
             for (int i = 0; i < b; i++) {
                 int j = i + 1;
-                System.out.println(j + " - " + reindeers.get(i).getName());
+                System.out.println(j + " - " + reindeersSorted.get(i).getName());
             }
             reindeers.clear();
             t--;

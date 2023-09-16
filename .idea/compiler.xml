@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="beecrowd-elfo-das-trevas" />
+        <module name="1766-uri-beecrowd" />
       </profile>
     </annotationProcessing>
   </component>
